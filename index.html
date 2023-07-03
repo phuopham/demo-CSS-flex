@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo CSS flexbox</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;">
+        CSS lession: flexbox
+    </h1>
+    <section>
+        <ol>
+            <li>
+                <summary>
+                    <h3>flexbox và hướng tiếp cận</h3>
+                </summary>
+                <details>
+                    <p>Flexbox cung cấp một cách hiệu quả hơn để bố trí, căn chỉnh và phân phối không gian giữa các thẻ
+                        con
+                        trong một thẻ cha chung, ngay cả khi kích thước của chúng không xác định và/hoặc động (thường
+                        dùng
+                        các đơn vị đo:
+                        vh/vw/em/rem/%....)</p>
+
+                    <p>Ý tưởng chính đằng sau bố cục flexbox là cung cấp cho vùng chứa khả năng thay đổi chiều
+                        rộng/chiều
+                        cao (và thứ tự) của các mục của nó để lấp đầy tốt nhất không gian có sẵn (hầu hết để phù hợp với
+                        tất
+                        cả các loại thiết bị hiển thị và kích thước màn hình). Flex container mở rộng các mục để lấp đầy
+                        không gian trống có sẵn hoặc thu nhỏ chúng để tránh tràn.</p>
+
+                    <h5>Khi nào nên sử dụng flexbox?</h5>
+                    <p>Bố cục flexbox đối lập với bố cục mặc định (direction-agnostic) (đối lập với bố cục
+                        block và inline). Mặc dù chúng hoạt động tốt trong nhiều trường hợp, nhưng chúng thiếu tính linh
+                        hoạt để hỗ trợ các kích thước màn hình lớn hoặc phức tạp</p>
+
+                    <p><strong>Note:</strong> Bố cục Flexbox phù hợp nhất với các thành phần của ứng dụng và kích thước
+                        màn
+                        hình nhỏ, trong khi bố cục Lưới (grid) dành cho bố cục có kích thước lớn hơn</p>
+                </details>
+            </li>
+            <li>
+                <summary>
+                    <h3>Thuật ngữ</h3>
+                </summary>
+                <details>
+                    <p>Vì flexbox là một bộ mô-đun và không phải là một thuộc tính duy nhất, nên nó liên quan đến rất
+                        nhiều thứ bao gồm
+                        bộ tập hợp các thuộc tính của nó. Một số trong số chúng có nghĩa là được đặt trên thẻ cha (phần
+                        tử cha, được gọi là “flex container”) trong khi những thuộc tính khác được đặt trên phần tử con
+                        (được gọi là “flex items”)
+
+                    <p>Nếu bố cục “thông thường” dựa trên block và inline để xác định cách sắp xếp, thì bố cục linh hoạt
+                        dựa
+                        trên hướng “flex-flow”.</p>
+                    <figure class="wp-block-image is-resized"><img decoding="async" loading="lazy"
+                            src="https://css-tricks.com/wp-content/uploads/2018/11/00-basic-terminology.svg"
+                            alt="A diagram explaining flexbox terminology. The size across the main axis of flexbox is called the main size, the other direction is the cross size. Those sizes have a main start, main end, cross start, and cross end."
+                            width="550" height="184"></figure>
+
+
+
+                    <p>Các phần tử sẽ được sắp xếp theo hướng <code>main axis</code> (từ <code>main-start</code>
+                        đến <code>main-end</code>) hoặc <code>cross axis</code> (từ <code>cross-start</code> đến
+                        <code>cross-end</code>).
+                    </p>
+                    <ul>
+                        <li><strong>main axis / primary axis</strong> – Trục chính của flex container là trục chính dọc
+                            theo đó các
+                            <code>flex-items</code> được bố trí. Hãy coi chừng, nó không nhất
+                            thiết phải nằm ngang; nó phụ thuộc vào thuộc tính <code>flex-direction</code>(xem bên dưới).
+                        </li>
+                        <li><strong>main-start | main-end</strong> – Các <code>flex items</code> được đặt trong
+                            <code>container</code>
+                            bắt đầu từ <code>main-start</code> đi dần tới <code>main-end</code>.
+                        </li>
+                        <li><strong>main size</strong> – Chiều rộng hoặc chiều cao của <code>flex items</code>, tùy
+                            thuộc vào <code>main size</code>, là kích thước chính của thẻ. Thuộc tính
+                            kích thước chính của flexbox là thuộc tính <code>width</code> hoặc
+                            <code>height</code>, tùy theo thuộc tính nào trong kích thước
+                            chính.
+                        </li>
+                        <li><strong>cross axis / secondary axis</strong> – Trục vuông góc với trục chính. Hướng của nó
+                            phụ thuộc vào hướng trục chính(main axis).</li>
+                        <li><strong>cross-start | cross-end</strong> – Là chuỗi các <code>flex items</code> và được đặt
+                            vào <code>container</code> bắt đầu từ <code>cross start</code> và đi về phía
+                            <code>cross end</code>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <summary>
+                    <h3>Cơ bản</h3>
+                </summary>
+                <details>
+                    <b>Một số thuộc tính ở thẻ cha</b>
+                    <pre>
+.container {
+    display: flex; /*bắt buộc*/
+    flex-direction: row | row-reverse | column | column-reverse; 
+    justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left |
+right;
+    align-content: flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end |
+baseline | first baseline | last baseline + ... safe | unsafe;
+    flex-wrap: wrap | nowrap
+    gap: 10px | 2em | 2rem
+}
+                    </pre>
+                    <b>Một số thuộc tính ở thẻ con</b>
+                    <pre>
+.child {
+    flex: number;
+    align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+                    </pre>
+
+                    * Tham khảo thêm: <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide
+                        to Flexbox</a>
+                </details>
+            </li>
+            <li>
+                <summary>
+                    <h3><a href="#aa-more-sources" aria-hidden="true" class="aal_anchor" id="aa-more-sources"></a>Thông
+                        tin thêm</h3>
+                </summary>
+                <details>
+                    <ul>
+                        <li><a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/"> An Interactive
+                                Guide to Flexbox - Josh Comeau</a>
+                        </li>
+                        <li><a href="https://www.w3.org/TR/css-flexbox-1/" rel="noopener">CSS Flexible Box Layout Module
+                                Level 1</a>
+                            (W3C)</li>
+                        <li><a href="https://www.digitalocean.com/community/cheatsheets/css-flexbox?utm_medium=content_acq&amp;utm_source=css-tricks&amp;utm_campaign=&amp;utm_content=awareness_bestsellers"
+                                rel="noopener">A CSS Flexbox Cheatsheet</a> (DigitalOcean)</li>
+
+
+
+                        <li><a href="https://www.digitalocean.com/community/tutorials/css-centering-using-flexbox?utm_medium=content_acq&amp;utm_source=css-tricks&amp;utm_campaign=&amp;utm_content=awareness_bestsellers"
+                                rel="noopener">Centering Things in CSS With Flexbox</a> (DigitalOcean)</li>
+
+
+
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox"
+                                rel="noopener">CSS
+                                Layout: Flexbox</a> (MDN)</li>
+
+
+
+                        <li><a href="https://www.smashingmagazine.com/2018/10/flexbox-use-cases/" rel="noopener">Use
+                                Cases
+                                for
+                                Flexbox</a> (Smashing Magazine)</li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <h3>Let's play</h3>
+            </li>
+        </ol>
+    </section>
+    <p class="codepen" data-height="810" data-default-tab="result" data-slug-hash="BaamRam" data-user="ndangelo"
+        style="height: 810px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+        <span>See the Pen <a href="https://codepen.io/ndangelo/pen/BaamRam">
+                Flexbox playground</a> by Nicholas D'Angelo (<a href="https://codepen.io/ndangelo">@ndangelo</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+</body>
+
+</html>
