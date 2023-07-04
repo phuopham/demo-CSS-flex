@@ -31,22 +31,6 @@
                         tất
                         cả các loại thiết bị hiển thị và kích thước màn hình). Flex container mở rộng các mục để lấp đầy
                         không gian trống có sẵn hoặc thu nhỏ chúng để tránh tràn.</p>
-
-                    <h5>Khi nào nên sử dụng flexbox?</h5>
-                    <p>Bố cục flexbox đối lập với bố cục mặc định (direction-agnostic) (đối lập với bố cục
-                        block và inline). Mặc dù chúng hoạt động tốt trong nhiều trường hợp, nhưng chúng thiếu tính linh
-                        hoạt để hỗ trợ các kích thước màn hình lớn hoặc phức tạp</p>
-
-                    <p><strong>Note:</strong> Bố cục Flexbox phù hợp nhất với các thành phần của ứng dụng và kích thước
-                        màn
-                        hình nhỏ, trong khi bố cục Lưới (grid) dành cho bố cục có kích thước lớn hơn</p>
-                </details>
-            </li>
-            <li>
-                <summary>
-                    <h3>Thuật ngữ</h3>
-                </summary>
-                <details>
                     <p>Vì flexbox là một bộ mô-đun và không phải là một thuộc tính duy nhất, nên nó liên quan đến rất
                         nhiều thứ bao gồm
                         bộ tập hợp các thuộc tính của nó. Một số trong số chúng có nghĩa là được đặt trên thẻ cha (phần
@@ -67,37 +51,29 @@
                         đến <code>main-end</code>) hoặc <code>cross axis</code> (từ <code>cross-start</code> đến
                         <code>cross-end</code>).
                     </p>
-                    <ul>
-                        <li><strong>main axis / primary axis</strong> – Trục chính của flex container là trục chính dọc
-                            theo đó các
-                            <code>flex-items</code> được bố trí. Hãy coi chừng, nó không nhất
-                            thiết phải nằm ngang; nó phụ thuộc vào thuộc tính <code>flex-direction</code>(xem bên dưới).
-                        </li>
-                        <li><strong>main-start | main-end</strong> – Các <code>flex items</code> được đặt trong
-                            <code>container</code>
-                            bắt đầu từ <code>main-start</code> đi dần tới <code>main-end</code>.
-                        </li>
-                        <li><strong>main size</strong> – Chiều rộng hoặc chiều cao của <code>flex items</code>, tùy
-                            thuộc vào <code>main size</code>, là kích thước chính của thẻ. Thuộc tính
-                            kích thước chính của flexbox là thuộc tính <code>width</code> hoặc
-                            <code>height</code>, tùy theo thuộc tính nào trong kích thước
-                            chính.
-                        </li>
-                        <li><strong>cross axis / secondary axis</strong> – Trục vuông góc với trục chính. Hướng của nó
-                            phụ thuộc vào hướng trục chính(main axis).</li>
-                        <li><strong>cross-start | cross-end</strong> – Là chuỗi các <code>flex items</code> và được đặt
-                            vào <code>container</code> bắt đầu từ <code>cross start</code> và đi về phía
-                            <code>cross end</code>
-                        </li>
-                    </ul>
+
+                    <h5>Khi nào nên sử dụng flexbox?</h5>
+                    <p>Bố cục flexbox đối lập với bố cục mặc định (direction-agnostic) (đối lập với bố cục
+                        block và inline). Mặc dù chúng hoạt động tốt trong nhiều trường hợp, nhưng chúng thiếu tính linh
+                        hoạt để hỗ trợ các kích thước màn hình lớn hoặc phức tạp</p>
+
+                    <p><strong>Note:</strong> Bố cục Flexbox phù hợp nhất với các thành phần của ứng dụng và kích thước
+                        vùng trình bày nhỏ, trong khi bố cục Lưới (grid) dành cho bố cục có kích thước lớn hơn</p>
+
+                    <p>Ví dụ:</p>
+                    <p>- Sử dụng để sắp xếp ảnh</p>
+                    <img src="https://www.quackit.com/pix/css/flexbox/examples/flexbox_photo_gallery_flex-direction_row.png"
+                        alt="">
+                    <p>- Sử dụng để sắp xếp "card"</p>
+                    <img src="https://www.quackit.com/pix/css/flexbox/examples/media_object_image_left.gif" alt="">
                 </details>
             </li>
             <li>
                 <summary>
-                    <h3>Cơ bản</h3>
+                    <h3>Cách sử dụng</h3>
                 </summary>
                 <details>
-                    <b>Một số thuộc tính ở thẻ cha</b>
+                    <b>Các thuộc tính ở thẻ cha</b>
                     <pre>
 .container {
     display: flex; /*bắt buộc*/
@@ -110,7 +86,7 @@ baseline | first baseline | last baseline + ... safe | unsafe;
     gap: 10px | 2em | 2rem ;
 }
                     </pre>
-                    <b>Một số thuộc tính ở thẻ con</b>
+                    <b>Các thuộc tính ở thẻ con</b>
                     <pre>
 .child {
     flex: number;
@@ -160,6 +136,7 @@ baseline | first baseline | last baseline + ... safe | unsafe;
             </li>
             <li>
                 <h3>Let's play</h3>
+                <a href="https://flexboxfroggy.com/">FlexboxFroggy</a>
             </li>
         </ol>
     </section>
@@ -170,6 +147,8 @@ baseline | first baseline | last baseline + ... safe | unsafe;
             on <a href="https://codepen.io">CodePen</a>.</span>
     </p>
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
 </body>
 
 </html>
